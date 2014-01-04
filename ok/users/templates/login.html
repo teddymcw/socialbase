@@ -1,0 +1,14 @@
+{% extends "template.html" %}
+{% block content %}
+<div class="row" class="jumbo">
+ <div class="large-12 columns">
+  <!-- <p> Temp Login: <a href="/main">Login</a></p> -->
+  <form action="" method="post">
+	  Username: <input type="text" name="username" value="{{ request.form.username }}">
+	  Password: <input type="password" name="password" value="{{ request.form.password }}">
+	  <p><input class="small round button" type="submit" value="Login"></p>
+	  <!-- See if the if statement works for the login on the template -->
+  </form>  
+ </div>
+</div>
+{% endblock %}

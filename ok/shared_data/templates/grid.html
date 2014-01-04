@@ -1,0 +1,78 @@
+{% extends "template.html" %}
+{% block content %}
+
+
+<!-- ADD POST SECTION -->
+<div class="row" class="jumbo">
+ <div class="large-12 columns">
+  
+  <form action="" method="post">
+	  Username: <input type="text" name="username" value="{{ request.form.username }}">
+	  Password: <input type="password" name="password" value="{{ request.form.password }}">
+	  <p><input class="small round button" type="submit" value="Login"></p>
+	  <!-- See if the if statement works for the login on the template -->
+  </form>  
+ </div>
+</div>
+
+<!-- CURRENT POSTS GRID SECTION -->
+
+<div class="row" style="text-align: center;">
+    <div class="large-12 columns">
+  <br/>
+  <h3>Posts:</h3>
+  
+    <table>
+	  <thead>
+	    <tr>
+	      <th width="50">id</th>
+	      <th width="150">Title</th>
+	      <th width="80">Posted Date</th>
+	      <th width="800">Post</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  {% for p in open_posts %}
+	    <tr>
+	      <td>{{ p.post_id }}</td>
+	      <td>{{ p.title }}</td>
+	      <td>{{ p.posted_date }}</td>
+	      <td>{{ p.content }}</td>
+	    </tr>
+	  {% endfor %}
+	  </tbody>
+	</table>
+
+  </div>
+</div>
+
+<!-- CLASSIC POSTS GRID SECTION -->
+
+<div class="row" style="text-align: center;">
+    <div class="large-12 columns">
+  <br/>
+  <h3>Classic Posts:</h3>
+  
+    <table>
+	  <thead>
+	    <tr>
+	      <th width="50">id</th>
+	      <th width="150">Title</th>
+	      <th width="80">Posted Date</th>
+	      <th width="800">Post</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  {% for p in old_posts %}
+	    <tr>
+	      <td>{{ p.post_id }}</td>
+	      <td>{{ p.title }}</td>
+	      <td>{{ p.posted_date }}</td>
+	      <td>{{ p.content }}</td>
+	    </tr>
+	  {% endfor %}
+	  </tbody>
+	</table>
+
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mingle | Welcome</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.css') }}" />
+    <script src="js/modernizr.js"></script>
+    <style>
+
+    </style>
+
+
+  </head>
+  <body>
+<div class="row" class="jumbo">
+ <div class="large-12 columns">
+ <!-- don't forget to change headers and title -->
+  <h2 style="text-align: center;">Mingle</h2>
+    <div class="container">
+     <!-- this is bootstrap below, what is equiv? to class="nav pull-right"-->
+      <ul>
+        {% if not session.logged_in %}
+        <li><a href="{{ url_for('users.register') }}"><input class="small round button" type="submit" value="Signup"></a></li>
+        {% else %}
+        <!-- this should be in footer though -->
+        <li><a href="{{ url_for('users.logout') }}"><input class="small round button" type="submit" value="Logout"></a></li>
+        {% endif %}
+      </ul>
+      {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div> <br/><br/>
+      {% endfor %}
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }} </p> <br/><br/>
+      {% endif %}
+
+      {% block content %}
+      {% endblock %}
+    </div>
+  </div>
+</div>
+
+ <!-- Logout Footer -->
+<div class="row">
+  <div class="large-1 columns"></div>
+  <div class="large-1 large-offset-10 columns">
+    <a class="small secondary button"  href="/logout">Logout</a>
+  </div>
+</div>
+ 
+  <script src="js/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
